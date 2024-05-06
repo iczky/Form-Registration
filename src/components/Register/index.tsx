@@ -3,12 +3,16 @@ import * as Yup from "yup";
 import TextInput from "./TextInput";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import { useFormData } from "../context/TableDataContext";
 
 const Register = () => {
   const navigate = useNavigate();
   const handleClick = useCallback(() => {
     navigate("/data");
   }, [navigate]);
+
+  const { fetchData } = useFormData();
+
   return (
     <>
       <section className="flex justify-center items-center h-screen w-screen">
@@ -35,7 +39,7 @@ const Register = () => {
               await fetch("http://localhost:3000/data", {
                 method: "POST",
                 body: JSON.stringify(values),
-              }).then((data) => console.log(data));
+              }).then(fetchData);
               handleClick();
               resetForm();
             }}>
