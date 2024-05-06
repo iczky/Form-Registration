@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import Registration from "./pages/Registration/index.tsx";
 import TableData from "./pages/TableData/index.tsx";
+import { FormDataProvider } from "./components/context/TableDataContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <FormDataProvider>
+      <RouterProvider router={router} />
+    </FormDataProvider>
   </React.StrictMode>
 );
