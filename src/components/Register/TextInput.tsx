@@ -1,6 +1,14 @@
 import { useField } from "formik";
 
-const TextInput = ({ label, ...props }) => {
+interface TextinputProps {
+  name: string;
+  label: string;
+  id: string;
+  type: string;
+  placeholder: string;
+}
+
+const TextInput: React.FC<TextinputProps> = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className="flex flex-col gap-1 pt-4">
